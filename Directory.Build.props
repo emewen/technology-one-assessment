@@ -1,0 +1,25 @@
+<Project>
+
+  <!-- Shared by every project in the solution. A new project inherits the same strictness
+  without anyone having to remember to copy it. -->
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <InvariantGlobalization>true</InvariantGlobalization>
+
+    <!-- A warning that reaches a pull request has already cost a review cycle. Stop on it
+    here instead. -->
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningLevel>9999</WarningLevel>
+    <AnalysisMode>All</AnalysisMode>
+    <AnalysisLevel>latest</AnalysisLevel>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+
+    <NeutralLanguage>en-AU</NeutralLanguage>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+
+</Project>

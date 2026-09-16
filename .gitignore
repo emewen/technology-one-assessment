@@ -1,0 +1,56 @@
+## Build output
+
+[Bb]in/
+[Oo]bj/
+artifacts/
+[Dd]ebug/
+[Rr]elease/
+*.dll
+*.exe
+*.pdb
+*.cache
+
+## Test output
+
+[Tt]est[Rr]esult*/
+coverage*.json
+coverage*.xml
+coverage*.info
+*.trx
+*.coverage
+*.coverage.xml
+
+## Visual Studio and Rider
+
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.DotSettings.user
+
+## NuGet
+
+*.nupkg
+*.snupkg
+.nuget/
+packages/
+!packages/build/
+
+## Publish output and secrets
+
+*.publishsettings
+*.pubxml.user
+PublishProfiles/
+appsettings.*.local.json
+*.env
+.env.*
+!.env.example
+
+## Operating system
+
+.DS_Store
+Thumbs.db
+desktop.ini

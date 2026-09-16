@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/NumberToWords.Api/NumberToWords.Api.csproj" />
+    <Project Path="src/NumberToWords.Domain/NumberToWords.Domain.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/NumberToWords.Api.Tests/NumberToWords.Api.Tests.csproj" />
+    <Project Path="tests/NumberToWords.Domain.Tests/NumberToWords.Domain.Tests.csproj" />
+  </Folder>
+</Solution>

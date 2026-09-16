@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Number to Words</title>
+  <meta name="description" content="Convert an amount of money into words.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+<body>
+  <a class="skip-link" href="#amount">Skip to the amount field</a>
+
+  <header class="masthead">
+    <div class="shell">
+      <h1>Number to Words</h1>
+      <p class="masthead__subtitle">Convert an amount of money into the words you would write on a cheque.</p>
+    </div>
+  </header>
+
+  <main class="shell" id="main">
+    <section class="card" aria-labelledby="converter-heading">
+      <h2 id="converter-heading" class="card__heading">Convert an amount</h2>
+
+      <form id="converter" novalidate>
+        <div class="field">
+          <label class="field__label" for="amount">Amount</label>
+          <div class="field__control">
+            <span class="field__prefix" aria-hidden="true">$</span>
+            <input
+              id="amount"
+              name="amount"
+              type="text"
+              inputmode="decimal"
+              autocomplete="off"
+              spellcheck="false"
+              maxlength="64"
+              placeholder="123.45"
+              aria-describedby="amount-hint amount-error"
+              required>
+          </div>
+          <p class="field__hint" id="amount-hint">
+            Up to two decimal places. Commas and a dollar sign are ignored.
+          </p>
+          <p class="field__error" id="amount-error" role="alert" hidden></p>
+        </div>
+
+        <button class="button" type="submit" id="submit">Convert</button>
+      </form>
+
+      <div class="result" id="result" hidden>
+        <h3 class="result__label">In words</h3>
+        <output class="result__words" id="words" for="amount"></output>
+        <p class="result__amount">
+          Read as <span id="parsed-amount"></span>
+        </p>
+      </div>
+
+      <div class="status" id="status" role="status" aria-live="polite"></div>
+    </section>
+
+    <section class="card card--quiet" aria-labelledby="examples-heading">
+      <h2 id="examples-heading" class="card__heading">Examples</h2>
+      <p class="card__intro">Select one to load it into the field.</p>
+      <ul class="examples" id="examples">
+        <li><button class="example" type="button" data-amount="123.45">123.45</button></li>
+        <li><button class="example" type="button" data-amount="0.45">0.45</button></li>
+        <li><button class="example" type="button" data-amount="1,001.00">1,001.00</button></li>
+        <li><button class="example" type="button" data-amount="1000000">1000000</button></li>
+        <li><button class="example" type="button" data-amount="-99.99">-99.99</button></li>
+        <li><button class="example" type="button" data-amount="0">0</button></li>
+      </ul>
+    </section>
+
+    <section class="card card--quiet" aria-labelledby="rules-heading">
+      <h2 id="rules-heading" class="card__heading">What the converter accepts</h2>
+      <dl class="rules">
+        <dt>Decimal places</dt>
+        <dd>Two at most. An amount like 1.234 is refused, never rounded, so your figure does not change without you seeing it.</dd>
+
+        <dt>Size</dt>
+        <dd>Up to 30 digits before the decimal point, which reaches the octillions.</dd>
+
+        <dt>Formatting</dt>
+        <dd>Spaces, commas and a leading dollar sign are ignored. A leading minus gives an amount below zero.</dd>
+
+        <dt>Wording</dt>
+        <dd>Australian usage. 123 reads as ONE HUNDRED AND TWENTY-THREE, and 1001 as ONE THOUSAND AND ONE.</dd>
+      </dl>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="shell">
+      <p>Built for the TechnologyOne developer technical test.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<Project>
+
+  <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
+
+  <PropertyGroup>
+    <IsPackable>false</IsPackable>
+
+    <!-- Test names read as sentences, which needs the underscores CA1707 forbids. Nobody
+    reads XML documentation from a test assembly. CA1515 wants internal types that
+    xUnit then refuses to discover. -->
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);CA1707;CA1861;CA2007;CA1515</NoWarn>
+  </PropertyGroup>
+
+</Project>

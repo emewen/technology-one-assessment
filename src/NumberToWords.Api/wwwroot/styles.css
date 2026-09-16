@@ -1,0 +1,349 @@
+/* Colours are custom properties, so the dark scheme below restates values and nothing else. */
+:root {
+  --page: #f4f5f7;
+  --surface: #ffffff;
+  --surface-quiet: #fbfbfc;
+  --ink: #1a1d21;
+  --ink-soft: #5a6672;
+  --line: #d9dde2;
+  --accent: #1f3a5f;
+  --accent-ink: #ffffff;
+  --accent-soft: #eef2f7;
+  --header: #1f3a5f;
+  --header-ink: #ffffff;
+  --header-line: transparent;
+  --error: #96261d;
+  --error-soft: #fdf2f1;
+  --focus: #2f6fb5;
+  --radius: 8px;
+  --shell: 46rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #14171a;
+    --surface: #1c2024;
+    --surface-quiet: #191d21;
+    --ink: #e8eaed;
+    --ink-soft: #a3adb8;
+    --line: #333a41;
+    --accent: #9dbde0;
+    --accent-ink: #10151a;
+    --accent-soft: #232b34;
+    /* The light accent suits small controls. A full width band of it lights up the top of
+    an otherwise dark page, so the masthead keeps its own pair. */
+    --header: #1a1f26;
+    --header-ink: #e8eaed;
+    --header-line: #2c343d;
+    --error: #f2a49c;
+    --error-soft: #2b1e1d;
+    --focus: #79aee6;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.shell {
+  width: 100%;
+  max-width: var(--shell);
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--accent);
+  color: var(--accent-ink);
+  padding: 0.6rem 1rem;
+  z-index: 10;
+}
+
+.skip-link:focus {
+  left: 0;
+}
+
+/* Masthead */
+
+.masthead {
+  background: var(--header);
+  color: var(--header-ink);
+  border-bottom: 1px solid var(--header-line);
+  padding: 2rem 0 1.75rem;
+}
+
+.masthead h1 {
+  margin: 0;
+  font-size: 1.6rem;
+  letter-spacing: 0.01em;
+}
+
+.masthead__subtitle {
+  margin: 0.35rem 0 0;
+  opacity: 0.85;
+  font-size: 0.95rem;
+}
+
+/* Cards */
+
+main {
+  padding-block: 1.75rem 2.5rem;
+  display: grid;
+  gap: 1.25rem;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+}
+
+.card--quiet {
+  background: var(--surface-quiet);
+}
+
+.card__heading {
+  margin: 0 0 1rem;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.card__intro {
+  margin: -0.5rem 0 0.9rem;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+/* Form */
+
+.field__label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.field__control {
+  display: flex;
+  align-items: stretch;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.field__control:focus-within {
+  outline: 2px solid var(--focus);
+  outline-offset: 1px;
+  border-color: var(--focus);
+}
+
+.field__prefix {
+  display: flex;
+  align-items: center;
+  padding: 0 0.85rem;
+  background: var(--accent-soft);
+  border-right: 1px solid var(--line);
+  color: var(--ink-soft);
+  font-variant-numeric: tabular-nums;
+}
+
+.field__control input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  padding: 0.75rem 0.9rem;
+  font: inherit;
+  font-variant-numeric: tabular-nums;
+  background: transparent;
+  color: var(--ink);
+}
+
+.field__control input:focus {
+  outline: none;
+}
+
+.field__hint {
+  margin: 0.45rem 0 0;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+.field__error {
+  margin: 0.6rem 0 0;
+  padding: 0.6rem 0.75rem;
+  border-left: 3px solid var(--error);
+  background: var(--error-soft);
+  color: var(--error);
+  font-size: 0.9rem;
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.button {
+  margin-top: 1.15rem;
+  padding: 0.7rem 1.6rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  background: var(--accent);
+  color: var(--accent-ink);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.button:hover {
+  filter: brightness(1.12);
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.button[disabled] {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+/* Result */
+
+.result {
+  margin-top: 1.5rem;
+  padding-top: 1.35rem;
+  border-top: 1px solid var(--line);
+}
+
+.result__label {
+  margin: 0 0 0.5rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.result__words {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.45;
+  word-break: break-word;
+}
+
+.result__amount {
+  margin: 0.7rem 0 0;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+.result__amount span {
+  font-variant-numeric: tabular-nums;
+}
+
+.status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Examples */
+
+.examples {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.example {
+  padding: 0.4rem 0.8rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.9rem;
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+}
+
+.example:hover {
+  border-color: var(--focus);
+}
+
+.example:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* Rules */
+
+.rules {
+  margin: 0;
+  display: grid;
+  gap: 0.35rem 1.25rem;
+}
+
+.rules dt {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.rules dd {
+  margin: 0 0 0.65rem;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+.rules dd:last-child {
+  margin-bottom: 0;
+}
+
+@media (min-width: 34rem) {
+  .rules {
+    grid-template-columns: 9rem 1fr;
+  }
+
+  .rules dd {
+    margin-bottom: 0.25rem;
+  }
+}
+
+/* Footer */
+
+.footer {
+  border-top: 1px solid var(--line);
+  padding: 1.25rem 0 2rem;
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+}
+
+.footer p {
+  margin: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
